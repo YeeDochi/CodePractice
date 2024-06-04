@@ -1,37 +1,36 @@
-#include<iostream>
-#include<algorithm>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-
 int main(void) {
-	
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-	int T;
-	int temp, weight,result =0;	
-	vector<int> way;
-	vector<int> node;
-	cin >> T;
-	for (int i = 0; i < T-1; i++) {
-		cin >> temp;
-		way.push_back(temp);
-	}
-	for (int i = 0; i < T ; i++) {
-		cin >> temp;
-		node.push_back(temp);
-	}
-	weight = node[0];
+    int T;
+    cin >> T;
 
-	for (int i = 0; i < T-1; i++) {
-		result += (weight * way[i]);
-		if (node[i + 1] < weight)weight = node[i + 1];
-	}
-	cout << result << endl;
-	
+    vector<long long> way(T - 1);
+    vector<long long> node(T);
 
+    for (int i = 0; i < T - 1; i++) {
+        cin >> way[i];
+    }
+    for (int i = 0; i < T; i++) {
+        cin >> node[i];
+    }
 
+    long long weight = node[0];
+    long long result = 0;
+
+    for (int i = 0; i < T - 1; i++) {
+        result += weight * way[i];
+        if (node[i + 1] < weight) {
+            weight = node[i + 1];
+        }
+    }
+
+    cout << result << endl;
+
+    return 0;
 }
-/*
-
-*/
