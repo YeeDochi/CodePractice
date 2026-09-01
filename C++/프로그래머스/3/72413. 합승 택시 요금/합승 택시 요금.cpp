@@ -4,14 +4,6 @@
 #include <queue>
 using namespace std;
 int INF = 100000000;
-void display(vector<vector<pair<int,int>>> graph){
-    for(int i = 1;i<graph.size();i++){
-        for(int j = 0; j<graph[i].size();j++){
-            cout << graph[i][j].first << "," << graph[i][j].second << ", ";
-        }
-        cout << "\n";
-    }
-}
 
 vector<int> dijkstra(int src, int n, const vector<vector<pair<int,int>>>& graph){
     vector<int> dist(n+1,INF);
@@ -46,7 +38,6 @@ int solution(int n, int s, int a, int b, vector<vector<int>> fares) {
         graph[fares[i][0]].push_back(pair(fares[i][1],fares[i][2]));
         graph[fares[i][1]].push_back(pair(fares[i][0],fares[i][2]));
     }
-    //display(graph);
 
     vector<int> da = dijkstra(a,n,graph);
     vector<int> db = dijkstra(b,n,graph);
